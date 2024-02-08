@@ -19,4 +19,8 @@ const server= http.createServer(app);
 
 server.listen(9091, () => {
     console.log("Server running on > http://localhost:9091/ ");
+});
+
+app.get('/get', (req, res) => {
+    res.send('POST request to the homepage')
 })
