@@ -47,17 +47,17 @@ function Register() {
                     <div>
                       <input
                        className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
-                       id="text"
-                       type="text"
-                       placeholder="First Name"
+                       id="password"
+                       type="password"
+                       placeholder="Password"
                       />
                     </div>
                     <div>
                       <input
                        className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
-                       id="text"
-                       type="text"
-                       placeholder="Last Name"
+                       id="password"
+                       type="password"
+                       placeholder="Repeat Password"
                       />
                     </div>
                   </div>
