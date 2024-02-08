@@ -1,12 +1,25 @@
 'use client'
+import axios from 'axios';
+import { error } from 'console';
 import React from 'react'
 import { useState, useEffect } from 'react'
 
 function Login() {
     const loginButtonClicked:any = () => {
         
-        alert("done");
         
+        axios.get('http://localhost:9091/get', {
+            
+          })
+          .then(function (response) {
+            alert(response);
+          })
+          .catch(function (error) {
+            alert(error);
+          })
+          .finally(() => {
+    
+          });
     }
 
     useEffect(
