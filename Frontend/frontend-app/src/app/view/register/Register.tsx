@@ -1,6 +1,44 @@
-import React from 'react'
+'use client'
+import axios from 'axios';
+import React, { useState } from 'react';
 
 function Register() {
+  
+  //set data using tstflds
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+  const handleInputChange = (e: { target: { id: any; value: any; }; }) => {
+    const { id, value } = e.target;
+    setFormData({
+      ...formData,
+      [id]: value
+    });
+  };
+
+
+  const registerButtonClicked:any = () => {
+    
+    console.log("send data "+ formData);    
+    axios.post('http://localhost:9999/api/user/register', {
+      userData:formData
+      })
+      .then(function (response) {
+        console.log(response); 
+        alert(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert(error);
+      })
+      .finally(() => {
+
+      });
+}
+
   return (
     <>
     <div className="bg-gradient-primary min-h-screen flex justify-center items-center bg-[#4e73df]">
@@ -21,7 +59,9 @@ function Register() {
                     <div>
                       <input
                        className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
-                       id="text"
+                       id="firstName"
+                       value={formData.firstName}
+                       onChange={handleInputChange}
                        type="text"
                        placeholder="First Name"
                       />
@@ -29,7 +69,9 @@ function Register() {
                     <div>
                       <input
                        className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
-                       id="text"
+                       id="lastName"
+                       value={formData.lastName}
+                       onChange={handleInputChange}
                        type="text"
                        placeholder="Last Name"
                       />
@@ -39,7 +81,9 @@ function Register() {
                     <input
                       className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
                       id="email"
-                      type="text"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      type="email"
                       placeholder="Email Address"
                     />
                   </div>
@@ -48,6 +92,8 @@ function Register() {
                       <input
                        className="w-full px-3 py-2 mb-3 text-md leading-tight text-gray-500 border-4 focus:border-gray-400 focus:border-4  rounded-3xl appearance-none focus:outline-none focus:shadow-outline focus:border-blue-200"
                        id="password"
+                       value={formData.password}
+                       onChange={handleInputChange}
                        type="password"
                        placeholder="Password"
                       />
@@ -63,7 +109,7 @@ function Register() {
                   </div>
                   <div className="mb-4">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full w-full text-sm"
-                  
+                  onClick={registerButtonClicked}
                     >
                       Register Account
                     </button>
